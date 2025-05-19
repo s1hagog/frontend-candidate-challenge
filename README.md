@@ -1,33 +1,67 @@
 # Coding Challenge for Frontend Developers
 
-## ASSIGNMENT DESCRIPTION
+## Installation
 
-Please use the React framework to solve this assignment or alternatively pure javascript if you don't know React.
+Follow these steps to set up the project:
 
-You can add/remove/upgrade any project dependency and change/remove any part of the project as you deem appropriate.
+1. Clone the repository:
 
-#### SPECIFICATION
+```bash
+git clone <repository-url>
+cd home-assignment-frontend
+```
 
-- Create a todo list app where the user can create/edit/delete tasks.
-- The user should also be able to toggle tasks as "done" vs. "not done".
-- When a task is deleted, it should be removed from the list.
-- New tasks should be added to the top of the list.
+2. Switch to project's node version (Node v20)
 
-#### OTHER REQUIREMENTS
+```bash
+nvm use
+```
 
-- All functionality should be tested. For the testing you should use [React testing library](https://testing-library.com/).
-- We value clean, readable, concise code.
-- The project is set up to use TypeScript. Please make sure your code has good types. If you don't know TypeScript, you are not required to write types.
+3. Install dependencies:
 
-## HOW TO SUBMIT YOUR CODE
+```bash
+npm install
+# or if you use Yarn
+yarn install
+```
 
-1. Fork this repo.
-2. Push your code changes to your fork.
-3. Create a pull request targeting this repo.
+## Testing
 
-If you have any doubts about the fork + pull request workflow you can refer to [this guide](https://reflectoring.io/github-fork-and-pull/).
+This project uses both Jest and Playwright for testing.
 
-## DEADLINE
-You can take all the time you need (but please not more than 2 weeks).
+### Running Jest Tests
 
-Submit your PR when you are proud of your code :-)
+For components unit tests:
+
+```bash
+npm test
+```
+
+### Running Playwright Tests
+
+1. Install Playwright browsers (first time only):
+
+```bash
+npx playwright install
+```
+
+2. Run the tests:
+
+```bash
+npx playwright test
+```
+
+## Project Structure
+
+```
+src/
+  ├── components/       # React components
+  ├── pages/            # Page components
+  ├── reducers/         # Redux slices
+  ├── services/         # Service layer for data management and external interactions
+  ├── types/            # TypeScript type definitions
+  ├── utils/            # Utility functions
+  ├── hooks/            # React hooks
+  ├── App.tsx           # Main App component
+  └── index.tsx         # Entry point
+```
