@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-
-import { TodoList } from "./components/TodoList";
-
-import "./styles.scss";
+import { Provider } from 'react-redux'
+import { BrowserRouter } from 'react-router'
+import { fetchTodos } from './reducers/todos'
+import './reset.scss'
+import { AppRoutes } from './routes'
+import { store } from './store'
+import './styles.scss'
 
 export default function App() {
-  const [todos] = useState([
-    { text: "Buy milk", done: true },
-    { text: "Buy bread", done: false },
-  ]);
+  store.dispatch(fetchTodos())
 
   return (
-    <div className="todoListApp">
-      <div className="forsta-logo" />
-      <TodoList todos={todos} />
-    </div>
-  );
+    <Provider store={store}>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </Provider>
+  )
 }
