@@ -15,7 +15,8 @@ function TodoFilter() {
     status: undefined,
   })
 
-  // Add this useEffect to listen for changes in the Redux store's filters
+  // when we change between local storage and cookie storage, we also dispatch reset filters.
+  // so this catches change to filters in the store
   useEffect(() => {
     setLocalFilters(storeFilters)
   }, [storeFilters])

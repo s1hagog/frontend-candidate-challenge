@@ -1,11 +1,11 @@
-import React, { PropsWithChildren } from 'react'
-import { render } from '@testing-library/react'
-import type { RenderOptions } from '@testing-library/react'
 import { combineReducers, configureStore } from '@reduxjs/toolkit'
+import type { RenderOptions } from '@testing-library/react'
+import { render } from '@testing-library/react'
+import { PropsWithChildren } from 'react'
 import { Provider } from 'react-redux'
 
-import type { AppStore, RootState } from '../store'
 import todosReducer from '../reducers/todos'
+import type { AppStore, RootState } from '../store'
 
 interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
   preloadedState?: Partial<RootState>
@@ -14,9 +14,12 @@ interface ExtendedRenderOptions extends Omit<RenderOptions, 'queries'> {
 
 export const setupStore = (preloadedState?: Partial<RootState>) => {
   return configureStore({
-    // need to use combineReducers because of preloaded state, otherwise types dont work
+    // this should ve worked, but `preloadedState` messes up TS type infers, so we need `combineReducers` for the correct type
+    // reducer: {
+    //   todos: todosReducer
+    // }
     reducer: combineReducers({
-      todos: todosReducer
+      todos: todosReducer,
     }),
     preloadedState,
   })
@@ -24,7 +27,7 @@ export const setupStore = (preloadedState?: Partial<RootState>) => {
 
 export function renderWithProviders(
   ui: React.ReactElement,
-  extendedRenderOptions: ExtendedRenderOptions = {}
+  extendedRenderOptions: ExtendedRenderOptions = {},
 ) {
   const {
     preloadedState = {},
@@ -38,6 +41,6 @@ export function renderWithProviders(
 
   return {
     store,
-    ...render(ui, { wrapper: Wrapper, ...renderOptions })
+    ...render(ui, { wrapper: Wrapper, ...renderOptions }),
   }
 }
