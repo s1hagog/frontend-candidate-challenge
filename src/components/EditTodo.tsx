@@ -44,19 +44,17 @@ const EditTodo = ({ todo, closeHandler }: EditTodoProps) => {
     key: K,
     value: UpdateTodoRequest[K],
   ) => {
-    const updated = { ...todo, [key]: value }
+    const updated = { ...localTodo, [key]: value }
     setLocalTodo(updated)
-    validate({ [key]: value })
   }
 
   const handleSubmit = () => {
-    if (!validate(todo)) return
+    if (!validate(localTodo)) return
     dispatch(updateTodo({ id: todo.id, body: localTodo }))
     closeHandler()
   }
 
   const handleDelete = () => {
-    if (!validate(todo)) return
     dispatch(removeTodo(todo.id))
     closeHandler()
   }

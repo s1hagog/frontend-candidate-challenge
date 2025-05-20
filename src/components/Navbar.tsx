@@ -48,6 +48,7 @@ const Navbar = () => {
               )
               setLocalTodoServiceKey(e.target.value as TodoServiceKeyEnum)
             }}
+            data-testid="select-change-storage"
           >
             <option value={TodoServiceKeyEnum.LOCAL_STORAGE}>
               💾 Local Storage

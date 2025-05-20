@@ -83,6 +83,7 @@ function TodoFilter() {
             <select
               value={filters.status || ''}
               onChange={(e) => updateFilter('status', e.target.value)}
+              data-testid="select-filter-todo-status"
             >
               <option value="">All Statuses</option>
               {statusOptions.map((s) => (

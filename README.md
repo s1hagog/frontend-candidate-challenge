@@ -51,6 +51,22 @@ npx playwright install
 npx playwright test
 ```
 
+#### Notes
+
+when I wanted to see playwright tests I used `slowMo` option, so there is a small delay between test actions. That way I could actually the see flow. Slow mo is commented out but you can add it back by uncommenting this lines in `playwright.config.ts`
+
+```ts
+  export default defineConfig({
+    ...
+    use: {
+      ...
+      // launchOptions: {
+      //   slowMo: 500,
+      // },
+    },
+    ...
+```
+
 ## Project Structure
 
 ```
